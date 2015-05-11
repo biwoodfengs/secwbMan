@@ -16,11 +16,13 @@ class Index extends MY_Controller {
     }
 
     public function index() {
+		$query = new leancloud\AVQuery('DID');
         $content = "asd" . "\r\n";
         Writelog::daily('test', $content);
         $data['username'] = $this->username;
        // $data['systeminfo'] = $this->systeminfo;
-        $data['list'] = $this->get_left_data();
+        $data['list'] = $this->get_left_data($query);
+		$data['cnt'] = $this->getDevCnt($query);
         $this->load->view('admin/index', $data);
     }
 
@@ -43,7 +45,7 @@ class Index extends MY_Controller {
     /**
      * 获取菜单栏内容
      */
-    public function get_left_data() {
+    public function get_left_data($query) {
         // $this->load->model('admin/Func_Model');
         // $authority = $this->get_role_authority();
         // $data = $this->Func_Model->get_own_func($authority);
@@ -54,12 +56,16 @@ class Index extends MY_Controller {
             // }
         // }
         // return genTree9($result, 'id', 'pid', 'childs');
-		$query = new leancloud\AVQuery('DID');
+		
 		$query->where('','');
 		$query->setLimit(10);
 		$ret = $query->find();
 		return $ret;
     }
+	
+	public function getDevCnt($query){
+		return $query->getCount()->count;
+	}
 
     /**
      * 获取权限代表值

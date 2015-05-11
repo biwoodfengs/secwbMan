@@ -13,5 +13,5 @@ include_once '../AV.php';
 		var_dump($value->did);
 	}
 	
-	var_dump( $query->getCount() );
+	var_dump( $query->getCount()->count );
 ?>

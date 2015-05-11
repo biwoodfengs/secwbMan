@@ -29,7 +29,7 @@
 			<div class="tabsHeader">
 				<div class="tabsHeaderContent">
 					<ul>
-						<li ><a href="javascript:;"><span>全部<?php echo "(13)"?></span></a></li>
+						<li ><a href="javascript:;"><span>全部<?php echo '('.$cnt.')';?></span></a></li>
 						<li ><a href="javascript:;"><span>在线<?php echo "(8)" ?></span></a></li>
 						<li ><a href="javascript:;"><span>离线 <?php echo "(5)" ?></span></a></li><!-- class="j-ajax" -->
 					</ul>
@@ -41,7 +41,7 @@
 						<h2><span></span>设备名</h2>
 					</div>
 					<div class="accordionContent">
-						<ul class="tree ">
+						<ul class="tree treeFolder ">
 							<?php foreach ($list->results as $value) { ?>
 								<li><a href="javascript:" target="navTab" rel=<?php echo $value->password; ?> ><?php echo $value->did; ?></a></li>
 							<?php } ?>
